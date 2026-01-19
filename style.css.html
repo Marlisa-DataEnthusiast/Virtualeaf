@@ -193,3 +193,46 @@ nav a:hover {
   margin-bottom: 12px;
   color: var(--text-muted);
 }
+
+/* ===============================
+   SERVICES PAGE
+================================ */
+
+.page-intro {
+  max-width: 640px;
+  font-size: 18px;
+  color: var(--text-muted);
+  margin-bottom: 56px;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.service-card {
+  background: #ffffff;
+  border: 1px solid var(--mystic);
+  border-radius: 18px;
+  padding: 32px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.service-card h3 {
+  margin-bottom: 14px;
+  color: var(--slate-green);
+  font-size: 20px;
+}
+
+.service-card p {
+  font-size: 15px;
+  color: var(--text-muted);
+}
+
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+}
+
+
