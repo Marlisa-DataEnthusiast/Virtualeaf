@@ -68,9 +68,8 @@ p {
 }
 
 .logo {
-  height: 20px;
+  height: 32px;
   width: auto;
-}
 }
 
 .brand-name {
@@ -106,22 +105,19 @@ nav a:hover {
 }
 
 .hero-content {
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  align-items: center;
-  gap: 48px;
+  max-width: 720px;
+  margin: auto;
+  text-align: center;
 }
 
- .hero-text h1 {
+.hero-text h1 {
   font-size: clamp(32px, 4vw, 42px);
-}
-
   margin-bottom: 24px;
 }
 
 .hero-text p {
   font-size: 18px;
-  margin-bottom: 36px;
+  margin: 0 auto 36px;
   max-width: 520px;
 }
 
@@ -131,7 +127,7 @@ nav a:hover {
   border-radius: 10px;
   text-decoration: none;
   font-weight: 600;
-  margin-right: 14px;
+  margin: 0 8px;
 }
 
 .btn.primary {
@@ -152,40 +148,101 @@ nav a:hover {
   background: var(--mystic);
 }
 
-.hero-visual img {
-  width: 100%;
-  max-width: 280px;
-  opacity: 0.9;
-}
-
-
 /* ===============================
-   5. GENERIC PAGE
+   5. GENERIC PAGE WRAPPER
 ================================ */
 .page {
+  position: relative;
   padding: 96px 0;
+  overflow: hidden;
 }
 
-.page-title {
-  font-size: 36px;
-  margin-bottom: 60px;
+.page .container {
+  max-width: 880px;
+}
+
+/* moodboard background */
+.page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(170,196,190,0.22),
+      transparent 55%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(95,134,127,0.14),
+      transparent 60%
+    );
+  z-index: 0;
+}
+
+.page::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(
+      rgba(95,134,127,0.15) 1px,
+      transparent 1px
+    );
+  background-size: 36px 36px;
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+.page > * {
+  position: relative;
+  z-index: 1;
 }
 
 /* ===============================
-   6. ABOUT PAGE
+   6. TYPOGRAPHY LAYOUT
+================================ */
+.page-title {
+  font-size: 36px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.lead {
+  font-size: 18px;
+  text-align: center;
+  margin: 0 auto 48px;
+  max-width: 640px;
+  color: var(--text-main);
+}
+
+.page p {
+  max-width: 640px;
+  margin: 0 auto 20px;
+}
+
+/* ===============================
+   7. ABOUT PAGE
 ================================ */
 .about-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
+  gap: 56px;
+}
+
+@media (min-width: 900px) {
+  .about-grid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 .mission-box {
-  margin-top: 32px;
-  padding: 28px;
-  border: 1px solid var(--mystic);
-  border-radius: 16px;
+  position: relative;
+  margin-top: 48px;
+  padding: 32px;
+  border-radius: 18px;
   background: #ffffff;
+  border: 1px solid var(--mystic);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.04);
 }
 
 .mission-box ul {
@@ -198,26 +255,47 @@ nav a:hover {
 }
 
 /* ===============================
-   7. SERVICES PAGE
+   8. SERVICES PAGE
 ================================ */
 .page-intro {
   max-width: 640px;
+  margin: 0 auto 56px;
+  text-align: center;
   font-size: 18px;
-  margin-bottom: 56px;
 }
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
   gap: 32px;
+  margin-top: 56px;
+}
+
+@media (min-width: 900px) {
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .service-card {
+  position: relative;
   background: #ffffff;
+  border-radius: 20px;
+  padding: 36px;
   border: 1px solid var(--mystic);
-  border-radius: 18px;
-  padding: 32px;
-  transition: transform .2s ease, box-shadow .2s ease;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.service-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  background: linear-gradient(
+    135deg,
+    rgba(95,134,127,0.08),
+    transparent 60%
+  );
+  pointer-events: none;
 }
 
 .service-card h3 {
@@ -231,11 +309,11 @@ nav a:hover {
 
 .service-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.08);
 }
 
 /* ===============================
-   8. FOOTER
+   9. FOOTER
 ================================ */
 .footer {
   padding: 32px 0;
@@ -246,102 +324,22 @@ nav a:hover {
 }
 
 /* ===============================
-   9. RESPONSIVE
+   10. RESPONSIVE
 ================================ */
 @media (max-width: 900px) {
-  .hero-content,
-  .about-grid,
-  .services-grid {
-    grid-template-columns: 1fr;
+  .page {
+    padding: 64px 0;
+  }
+
+  .page-title {
+    font-size: 30px;
+  }
+
+  .lead {
+    font-size: 17px;
   }
 
   nav a {
     margin-left: 16px;
   }
-
-  .hero {
-    padding: 64px 0;
-  }
 }
-
-/* ===============================
-   MOODBOARD VISUAL LAYER
-================================ */
-
-/* ABOUT */
-.about-page {
-  background: linear-gradient(
-    180deg,
-    #f6faf8,
-    #ffffff
-  );
-}
-
-.about-text .lead {
-  font-size: 18px;
-  margin-bottom: 20px;
-}
-
-.about-visual {
-  position: relative;
-  min-height: 420px;
-}
-
-.about-visual .blob {
-  position: absolute;
-  width: 320px;
-  height: 320px;
-  background: radial-gradient(
-    circle at 30% 30%,
-    rgba(170,196,190,0.45),
-    rgba(170,196,190,0.15),
-    transparent 70%
-  );
-  border-radius: 50%;
-  top: 40px;
-  right: 40px;
-}
-
-.about-visual .line-accent {
-  position: absolute;
-  width: 140px;
-  height: 2px;
-  background: var(--opal);
-  bottom: 80px;
-  left: 40px;
-  opacity: 0.6;
-}
-
-/* SERVICES */
-.services-page {
-  background: #ffffff;
-}
-
-.services-grid.mood .service-card {
-  position: relative;
-  overflow: hidden;
-}
-
-.services-grid.mood .service-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(95,134,127,0.08),
-    transparent 60%
-  );
-  border-radius: 18px;
-  pointer-events: none;
-}
-
-/* RESPONSIVE VISUAL */
-@media (max-width: 900px) {
-  .about-visual {
-    display: none;
-  }
-}
-
-
-
-
