@@ -258,3 +258,83 @@ nav a:hover {
     padding: 64px 0;
   }
 }
+
+/* ===============================
+   MOODBOARD VISUAL LAYER
+================================ */
+
+/* ABOUT */
+.about-page {
+  background: linear-gradient(
+    180deg,
+    #f6faf8,
+    #ffffff
+  );
+}
+
+.about-text .lead {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.about-visual {
+  position: relative;
+  min-height: 420px;
+}
+
+.about-visual .blob {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(170,196,190,0.45),
+    rgba(170,196,190,0.15),
+    transparent 70%
+  );
+  border-radius: 50%;
+  top: 40px;
+  right: 40px;
+}
+
+.about-visual .line-accent {
+  position: absolute;
+  width: 140px;
+  height: 2px;
+  background: var(--opal);
+  bottom: 80px;
+  left: 40px;
+  opacity: 0.6;
+}
+
+/* SERVICES */
+.services-page {
+  background: #ffffff;
+}
+
+.services-grid.mood .service-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.services-grid.mood .service-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(95,134,127,0.08),
+    transparent 60%
+  );
+  border-radius: 18px;
+  pointer-events: none;
+}
+
+/* RESPONSIVE VISUAL */
+@media (max-width: 900px) {
+  .about-visual {
+    display: none;
+  }
+}
+
+
